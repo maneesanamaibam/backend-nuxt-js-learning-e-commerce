@@ -11,6 +11,7 @@
 		"ecmaVersion": 2018,
 		"project": "./tsconfig.json"
 	},
+	"ignorePatterns": ["tests/"],
 	"plugins": ["prettier"],
 	"rules": {
 		"@typescript-eslint/no-magic-numbers": [
