@@ -8,11 +8,11 @@ export default class Crypto {
 	// So, the more is the number of iterations, the more secure the derived key will be,
 	// but in that case it takes greater amount of time to complete.
 	// number of interation - the value of 2145 is randomly chosen
-	private static iterations = 2145;
+	private static readonly iterations = 2145;
 
 	// keylen: It is the key of the required byte length and it is of type number.
 	// derive encryption key: 32 byte key length
-	private static keylen = 32;
+	private static readonly keylen = 32;
 
 	// digest: It is a digest algorithms of string type.
 	private static digest = 'sha512';
@@ -24,9 +24,9 @@ export default class Crypto {
 		// constant to encrypt the data
 		const inputEncoding = 'utf8';
 		const outputEncoding = 'base64';
-
+		const randomBytesSize = 12;
 		// random initialization vector
-		const iv = crypto.randomBytes(12);
+		const iv = crypto.randomBytes(randomBytesSize);
 
 		// The method gives an asynchronous Password-Based Key Derivation
 		const key: Buffer = crypto.pbkdf2Sync(
@@ -108,7 +108,8 @@ export default class Crypto {
 		// @data: It is used to update the cipher by new content
 		// @inputEncoding: Input encoding format
 		// @outputEncoding: Output encoding format
-		let str = decipher.update(text, null, outputEncoding);
+		// eslint-disable-next-line no-undefined
+		let str = decipher.update(text, undefined, outputEncoding);
 
 		// Return the buffer containing the value of cipher object.
 		// @outputEncoding: Output encoding format

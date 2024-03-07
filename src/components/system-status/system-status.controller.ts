@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response, Router } from 'express';
 import * as os from 'os';
 import * as process from 'process';
+import { NextFunction, Request, Response, Router } from 'express';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import ApiError from '../../abstractions/ApiError';
 import BaseApi from '../BaseApi';
@@ -15,7 +15,6 @@ import {
  * Status controller
  */
 export default class SystemStatusController extends BaseApi {
-
 	public basePath: string = 'system';
 	/**
 	 *

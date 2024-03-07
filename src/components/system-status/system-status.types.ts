@@ -1,3 +1,5 @@
+import { NetworkInterfaceInfo } from 'os';
+
 export interface INodeJsMemoryUsage {
 	rss: number;
 	heapTotal: number;
@@ -84,7 +86,7 @@ export interface IUserInfo {
 	username: string;
 	uid: number;
 	gid: number;
-	shell: string;
+	shell: string | null;
 	homedir: string;
 }
 
@@ -97,7 +99,7 @@ export interface IOsInformation {
 
 export interface ISystemInfoResponse {
 	cpus: INodeJsCpuInfo[];
-	network: { [index: string]: INodeJsNetworkInterfaceInfo[] };
+	network: NodeJS.Dict<NetworkInterfaceInfo[]>;
 	os: IOsInformation;
 	currentUser: IUserInfo;
 }
